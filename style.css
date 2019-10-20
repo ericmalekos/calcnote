@@ -1,0 +1,77 @@
+*
+{
+        margin: 0;
+        padding: 0;
+}
+
+.vl
+{
+        border-left: 6px solid lightgray;
+        height: 500px;
+        position: absolute;
+        left: 50%;
+        margin-left: -3px;
+        top: 0;
+}
+
+input[type=button]
+{
+        width: 50;
+        height: 50;
+        font-size: 25;
+        margin: 2;
+        cursor: pointer;
+        border-radius: 12px;
+        background-color: #e7e7e7;
+        color: black;
+}
+
+.textview
+{
+        width: 405;
+        margin: 3;
+        font-size: 25;
+        padding: 5;
+        border-style: solid;
+        border-color: #000;
+        background-color: lightgrey;
+        border-width: 2px;
+        color: #000;
+}
+
+.calculator
+{
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        transform: translateX(-50%) translateY(-50%);
+}
+
+
+.note
+{
+        position: absolute;
+        top: 0;
+        right: 0%;
+        width: 49%;
+        height: 100%;
+}
+
+.bg
+{
+        background: #ffffff;
+        height: 100%;
+}
+
+#transferButton
+{
+        width: 250px;
+}
+
+#notesArea
+{
+        box-sizing: border-box;
+        width: 90%;
+        height: 92%;
+        transform: translate(15px);
+}
