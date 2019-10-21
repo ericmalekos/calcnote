@@ -1,6 +1,7 @@
 <html>
 <!-- OK -->
 <head>
+  <script src="history.js"></script>
     <script>
 	<!-- document.onmousedown=disableclick;status="Right Click Disabled";function disableclick(event){ if(event.button==2) { alert(status); return false; }} -->
             
@@ -56,7 +57,9 @@
 
     </script>
 
-        <link rel="stylesheet" type="text/css" href="style.css" /> 
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="historyStyle.css"/>
+	
 	<title> Online Note-Taking Calculator </title>
 </head>
 <body>
@@ -122,6 +125,13 @@
       <h3>Coversions</h3>
     </div>
 
+	 <!-- *****history***** -->
+
+<div name="history">
+    <ul id="histList">
+      <li> TEST ITEM </li>
+    </ul>
+</div>
 
         <!-- *****The Note***** -->
     <div class="note">
