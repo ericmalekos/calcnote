@@ -11,7 +11,9 @@
             function equal(){
                 var exp = document.form.textview.value
                 if(exp){
+                    out = eval(exp)
                     document.form.textview.value = eval(exp)
+                    newElement(exp, out)
                 }
             }
             function clean(){
