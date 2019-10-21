@@ -3,8 +3,9 @@
 <head>
   <script src="history.js"></script>
     <script>
-	document.onmousedown=disableclick;status="Right Click Disabled";function disableclick(event){ if(event.button==2) { alert(status); return false; }}
-            function insert(num){
+	<!-- document.onmousedown=disableclick;status="Right Click Disabled";function disableclick(event){ if(event.button==2) { alert(status); return false; }} -->
+            
+	    function insert(num){
                 document.form.textview.value = document.form.textview.value+num
             }
             function equal(){
@@ -24,40 +25,84 @@
                 document.form.textview.value = exp.substring(0,exp.length-1)
             }
     </script>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <link rel="stylesheet" type="text/css" href="historyStyle.css"/>
+    <script language="javascript" type="text/javascript">
+	function addtext() {
+	var newtext = document.form.textview.value;
+	document.notes.notesArea.value += newtext;
+	}
+    </script>
 
-        <title> Online Note-Taking Calculator </title>
+    <script language="javascript" type="text/javascript">
+
+	function openCalc(evt, calcType) {
+  	    // Declare all variables
+  	    var i, tabcontent, tablinks;
+
+ 	    // Get all elements with class="tabcontent" and hide them
+  	    tabcontent = document.getElementsByClassName("tabcontent");
+  	    for (i = 0; i < tabcontent.length; i++) {
+    		tabcontent[i].style.display = "none";
+  		}
+
+  	    // Get all elements with class="tablinks" and remove the class "active"
+  	    tablinks = document.getElementsByClassName("tablinks");
+  	    for (i = 0; i < tablinks.length; i++) {
+    	        tablinks[i].className = tablinks[i].className.replace(" active", "");
+  		}
+
+  	    // Show the current tab, and add an "active" class to the link that opened the tab
+  	    document.getElementById(calcType).style.display = "block";
+  	    evt.currentTarget.className += " active";
+	}
+
+	document.getElementById("defaultOpen").click();
+
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="historyStyle.css"/>
+	
+	<title> Online Note-Taking Calculator </title>
 </head>
 <body>
     <div class="vl"></div>
     <div class="bg"></div>
-    <div class="calculator">
-        <!-- *****The Calculator***** -->
+
+
+        <!-- *****Tabs***** -->
+    <div class="tab">
+      <button id="defaultOpen" class="tablinks" onclick="openCalc(event, 'Main')" >Main</button>
+      <button class="tablinks" onclick="openCalc(event, 'Advance')">Advance</button>
+      <button class="tablinks" onclick="openCalc(event, 'Converter')">Converter</button>
+    </div>
+
+        <!-- *****  Main Calculator  ***** -->
+    <div id="Main" class="tabcontent">
+       <div class="calculator">
         <form name="form">
-            <input class="textview" name="textview" id="myInput">
+            <input class="textview" name="textview">
         </form>
         <table>
             <tr>
                 <td><input type="button" value="C" onclick="clean()"></td>
-                <td><input type="button" value="<" onclick="back()"></td>
+                <td><input type="button" value="⌫" onclick="back()"></td>
                 <td><input type="button" value="/" onclick="insert('/')"></td>
                 <td><input type="button" value="X" onclick="insert('*')"></td>
-                <td><input style="width:180" type="button" value="Other funcions" onclick=""></td>
+		<td><input style="width:180" type="button" value="Other funcions" onclick=""></td>
             </tr>
             <tr>
                 <td><input type="button" value="7" onclick="insert(7)"></td>
                 <td><input type="button" value="8" onclick="insert(8)"></td>
                 <td><input type="button" value="9" onclick="insert(9)"></td>
                 <td><input type="button" value="-" onclick="insert('-')"></td>
-                <td><input style="width:180" type="button" value="Other funcions" onclick=""></td>
+		<td><input style="width:180" type="button" value="Other funcions" onclick=""></td>
             </tr>
             <tr>
                 <td><input type="button" value="4" onclick="insert(4)"></td>
                 <td><input type="button" value="5" onclick="insert(5)"></td>
                 <td><input type="button" value="6" onclick="insert(6)"></td>
                 <td><input type="button" value="+" onclick="insert('+')"></td>
-                <td><input style="width:180" type="button" value="Other funcions" onclick=""></td>
+		<td><input style="width:180" type="button" value="Other funcions" onclick=""></td>
             </tr>
             <tr>
                 <td><input type="button" value="1" onclick="insert(1)"></td>
@@ -70,19 +115,33 @@
                 <td><input type="button" value="." onclick="insert('.')"></td>
             </tr>
         </table>
+      </div>
+
     </div>
-    <!-- *****history***** -->
+
+    <div id="Advance" class="tabcontent" style="display:none">
+      <h3>Advance Calculator</h3>
+    </div>
+
+    <div id="Converter" class="tabcontent" style="display:none">
+      <h3>Coversions</h3>
+    </div>
+
+	 <!-- *****history***** -->
 
 <div name="history">
     <ul id="histList">
       <li> TEST ITEM </li>
     </ul>
 </div>
-<!-- *****The Note***** -->
-  <div class="note">
-    <p id="noteText">
-          <b> The note goes here </b>
-    </p>
-  </div>
+
+        <!-- *****The Note***** -->
+    <div class="note">
+	<form name="notes">
+            <input type="button" id="transferButton" value="Transfer Calculator" onClick="addtext();">
+	    <textarea name="notesArea" rows="30" cols="50" id="notesArea" > </textarea> 
+	</form>
+    </div>
 </body>
 </html>
+
