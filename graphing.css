@@ -1,0 +1,12 @@
+#graphingCanvas
+{ 
+    border: 1px solid black; 
+    width: 60%;
+    height: 70%;
+}
+
+input.submitGraph
+{
+    width: 120px;
+    font-size: 10px;
+}

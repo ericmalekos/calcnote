@@ -49,9 +49,10 @@ input[type=button]
 }
 */
 
+/* Styles continer holding buttons and textarea */
 .note
 {
-        position: absolute;
+    position: fixed;
 	top: 0;
 	right: 0%;
 	width: 49%;
@@ -62,23 +63,60 @@ input[type=button]
 {
 	background: #ffffff;
 	height: 100%;
+	z-index: -10;
+	position: relative;
 }
  
-#transferButton
+/*Styles transfer buttons */
+ input.dlButtons
 {
-	width: 250px;
+	width: 30%;
+	font-size: 20px;
 }
 
+/*Styles actual textarea */
 #notesArea
 {
 	box-sizing: border-box;
 	width: 90%;
-	height: 92%;
+	height: 85%;
 	transform: translate(15px);
 }
 
+/* Style the history div */
+#history
+{
+	position: absolute;
+	top: 0;
+	right: 50%;
+	width: 15%;
+	height: 100%;
+	overflow: auto;
+}
 
+/* Style the Unordered List for history */
+#histlist
+{
+	display: block;
+	grid-auto-flow: row;
+	grid-gap: 5px;
+}
 
+/*Styles the individual list items */
+li.historyList
+{
+	position: relative;
+	min-height: 30px;
+	font-size: 15px;
+	padding-left: 10px;
+	padding-right: 30px;
+}
+
+/* moves arrow over for useability */
+span.move
+{
+	padding-right: 2px;
+}
 
 .tabcontent .tab
 {
@@ -96,7 +134,7 @@ input[type=button]
   	position: absolute;
   	top: 62%;
   	left: 3%;
-  	transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -111,7 +149,7 @@ input[type=button]
   	outline: none;
   	text-align: left;
   	cursor: pointer;
-  	transition: 0.3s;
+	transition: 0.3s;
 }
 
 /* Change background color of buttons on hover */
@@ -132,12 +170,14 @@ input[type=button]
 {
 	float: left;
   	padding: 0px 1px;
-  	width: 45%;
+  	width: 40%;
   	border: none;
   	height: 500px;
   	position: absolute;
   	top: 62%;
-  	left: 35%;
-  	transform: translateX(-50%) translateY(-50%);
+  	left: 30%;
+	  transform: translateX(-50%) translateY(-50%);
+	  z-index: 2;
 
 }
+
