@@ -8,18 +8,15 @@
   <!-- required libraries for JSPDF-->
   <script src="js/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
-    <script>
-	<!-- document.onmousedown=disableclick;status="Right Click Disabled";function disableclick(event){ if(event.button==2) { alert(status); return false; }} -->
-            
+
+    <script>            
 	    function insert(num){
                 document.form.textview.value = document.form.textview.value+num
             }
             function equal(){
                 var exp = document.form.textview.value
                 if(exp){
-                    out = eval(exp)
                     document.form.textview.value = eval(exp)
-                    newElement(exp, out)
                 }
             }
             function clean(){
@@ -59,23 +56,30 @@
 
     </script>
 
-    <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="converters.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css" /> 
     <link rel="stylesheet" type="text/css" href="historyStyle.css"/>
     <link rel="stylesheet" type="text/css" href="graphing.css"/>
-	
+
 	<title> Online Note-Taking Calculator </title>
 </head>
 <body>
     <div class="vl"></div>
-    <div class="bg"></div>
+<!--    <div class="bg"></div> -->
 
 
         <!-- *****Tabs***** -->
     <div class="tab">
       <button id="defaultOpen" class="tablinks" onclick="openCalc(event, 'Main')" >Main</button>
       <button class="tablinks" onclick="openCalc(event, 'Advance')">Advance</button>
-      <button class="tablinks" onclick="openCalc(event, 'Converter')">Converter</button>
+
+      <button class="tablinks" onclick="openCalc(event, 'Weight')">Weight</button>
+      <button class="tablinks" onclick="openCalc(event, 'Temperature')">Temperature</button>
+      <button class="tablinks" onclick="openCalc(event, 'Length')">Length</button>
+      <button class="tablinks" onclick="openCalc(event, 'Speed')">Speed</button>
       <button class="tablinks" onclick="openCalc(event, 'Graph')">Graphing</button>
+
     </div>
 
         <!-- *****  Main Calculator  ***** -->
@@ -88,33 +92,39 @@
             <tr>
                 <td><input type="button" value="C" onclick="clean()"></td>
                 <td><input type="button" value="⌫" onclick="back()"></td>
-                <td><input type="button" value="/" onclick="insert(' / ')"></td>
-                <td><input type="button" value="X" onclick="insert(' * ')"></td>
-		<td><input style="width:180" type="button" value="Other funcions" onclick=""></td>
+                <td><input type="button" value="÷" onclick="insert(' / ')"></td>
+                <td><input type="button" value="×" onclick="insert(' * ')"></td>
+            		<td><input style="width:180" type="button" value="xⁱ" onclick=""></td>
             </tr>
+          
             <tr>
                 <td><input type="button" value="7" onclick="insert(7)"></td>
                 <td><input type="button" value="8" onclick="insert(8)"></td>
                 <td><input type="button" value="9" onclick="insert(9)"></td>
                 <td><input type="button" value="-" onclick="insert(' - ')"></td>
-		<td><input style="width:180" type="button" value="Other funcions" onclick=""></td>
+	            	<td><input style="width:180" type="button" value="√" onclick=""></td>
             </tr>
+          
             <tr>
                 <td><input type="button" value="4" onclick="insert(4)"></td>
                 <td><input type="button" value="5" onclick="insert(5)"></td>
                 <td><input type="button" value="6" onclick="insert(6)"></td>
                 <td><input type="button" value="+" onclick="insert(' + ')"></td>
-		<td><input style="width:180" type="button" value="Other funcions" onclick=""></td>
+	            	<td><input style="width:180" type="button" value="sin" onclick=""></td>
             </tr>
+          
             <tr>
                 <td><input type="button" value="1" onclick="insert(1)"></td>
                 <td><input type="button" value="2" onclick="insert(2)"></td>
                 <td><input type="button" value="3" onclick="insert(3)"></td>
                 <td rowspan=5><input style="height:106" type="button" value="=" onclick="equal()"></td>
-            </tr>
+                <td><input style="width:180" type="button" value="cos" onclick=""></td>
+	          </tr>
+          
             <tr>
                 <td colspan=2><input style="width:106" type="button" value="0" onclick="insert(0)"></td>
                 <td><input type="button" value="." onclick="insert('.')"></td>
+                <td><input style="width:180" type="button" value="tan" onclick=""></td>
             </tr>
         </table>
       </div>
@@ -125,8 +135,176 @@
       <h3>Advance Calculator</h3>
     </div>
 
-    <div id="Converter" class="tabcontent" style="display:none">
-      <h3>Coversions</h3>
+    <div id="Weight" class="tabcontent" style="display:none">
+      <h3>Weight Converter</h3>
+
+        <div class="convertdiv" style="margin:0 -20px">
+                <p style="margin-left:8px;margin-bottom:4px">Type a value in any of the fields
+                to convert between weight measurements:</p>
+
+                <div class="convertdiv">
+                        <label>Pounds</label>
+                        <input id="inputPounds" class="" type="number"
+                        placeholder="Pounds" oninput="weightConverter(this.id,this.value)"
+                        onchange="weightConverter(this.id,this.value)">
+                </div>
+
+                <div class="convertdiv">
+                        <label>Kilograms</label>
+                        <input id="inputKilograms" class="" type="number"
+                        placeholder="Kilograms" oninput="weightConverter(this.id,this.value)"
+                        onchange="weightConverter(this.id,this.value)">
+                </div>
+ 
+                <div class="convertdiv">
+                        <label>Ounces</label>
+                        <input id="inputOunces" class="" type="number"
+                        placeholder="Ounces" oninput="weightConverter(this.id,this.value)"
+                        onchange="weightConverter(this.id,this.value)">
+                </div>
+
+                <div class="convertdiv">
+                        <label>Grams</label>
+                        <input id="inputGrams" class="" type="number"
+                        placeholder="Grams" oninput="weightConverter(this.id,this.value)"
+                        onchange="weightConverter(this.id,this.value)">
+                </div>
+
+                <div class="convertdiv">
+                        <label>Stones</label>
+                        <input id="inputStones" class="" type="number"
+                        placeholder="Stones" oninput="weightConverter(this.id,this.value)"
+                        onchange="weightConverter(this.id,this.value)">
+                </div>
+        </div>
+    </div>
+
+
+    <div id="Temperature" class="tabcontent" style="display:none">
+      <h3>Temperature Converter</h3>
+
+	<div class="convertdiv" style="margin:0 -20px">
+	  	<p style="margin-left:8px;margin-bottom:4px;">Type a value in any of the fields 
+		to convert between <br /> temperature measurements:</p>
+
+  		<div class="convertdiv">
+    			<label>Fahrenheit</label>
+    			<input id="inputFahrenheit" class="" type="number" min="-459.66999999999996" 
+			placeholder="Fahrenheit" oninput="temperatureConverter(this.id,this.value)" 
+			onchange="temperatureConverter(this.id,this.value)">
+  		</div>
+
+  		<div class="convertdiv">
+    	  		<label>Celsius</label>
+    	  		<input id="inputCelsius" class="" type="number" min="-273.15" 
+			placeholder="Celsius" oninput="temperatureConverter(this.id,this.value)" 
+			onchange="temperatureConverter(this.id,this.value)">
+  		</div>
+
+  		<div class="convertdiv">
+    	  		<label>Kelvin</label>
+    	  		<input id="inputKelvin" class="" type="number" min="0" 
+			placeholder="Kelvin" oninput="temperatureConverter(this.id,this.value)" 
+			onchange="temperatureConverter(this.id,this.value)">
+  		</div>
+
+   	</div>
+       
+    </div>
+  
+      <div id="Length" class="tabcontent" style="display:none">
+      <h3>Length Converter</h3>
+
+      	<div class="convertdiv" style="margin:0 -20px">
+                <p style="margin-left:8px;margin-bottom:4px;">Type a value in any of the fields to convert between Length measurements:</p>
+
+                <div class="convertdiv">
+                        <label>Feet</label>
+                        <input id="inputFeet" class="" type="number"
+                        placeholder="Feet" oninput="lengthConverter(this.id,this.value)"
+                        onchange="lengthConverter(this.id,this.value)">
+                </div>
+
+                <div class="convertdiv">
+                        <label>Meters</label>
+                        <input id="inputMeters" class="" type="number"
+                        placeholder="Meters" oninput="lengthConverter(this.id,this.value)"
+                        onchange="lengthConverter(this.id,this.value)">
+                </div>
+
+                <div class="convertdiv">
+                        <label>Inches</label>
+                        <input id="inputInches" class="" type="number"
+                        placeholder="Inches" oninput="lengthConverter(this.id,this.value)"
+                        onchange="lengthConverter(this.id,this.value)">
+                </div>
+
+                <div class="convertdiv">
+                        <label>cm</label>
+                        <input id="inputcm" class="" type="number"
+                        placeholder="cm" oninput="lengthConverter(this.id,this.value)"
+                        onchange="lengthConverter(this.id,this.value)">
+                </div>
+
+                <div class="convertdiv">
+                        <label>Yards</label>
+                        <input id="inputYards" class="" type="number"
+                        placeholder="Yards" oninput="lengthConverter(this.id,this.value)"
+                        onchange="lengthConverter(this.id,this.value)">
+                </div>
+
+                <div class="convertdiv">
+                        <label>Kilometers</label>
+                        <input id="inputKilometers" class="" type="number"
+                        placeholder="Kilometers" oninput="lengthConverter(this.id,this.value)"
+                        onchange="lengthConverter(this.id,this.value)">
+                </div>
+
+                <div class="convertdiv">
+                        <label>Miles</label>
+                        <input id="inputMiles" class="" type="number"
+                        placeholder="Miles" oninput="lengthConverter(this.id,this.value)"
+                        onchange="lengthConverter(this.id,this.value)">
+                </div>
+        </div>
+
+    </div>
+
+    <div id="Speed" class="tabcontent" style="display:none">
+      <h3>Speed Converter</h3>
+        <div class="convertdiv" style="margin:0 -20px">
+                <p style="margin-left:8px;margin-bottom:4px;">Type a value 
+                in any of the fields to convert between speed measurements:</p>
+  
+                <div class="convertdiv">
+                        <label>MPH</label>
+                        <input id="inputMPH" class="" type="number" 
+                        placeholder="MPH" oninput="speedConverter(this.id,this.value)" 
+                        onchange="speedConverter(this.id,this.value)">
+                </div>
+  
+                <div class="convertdiv">
+                        <label>KPH</label>
+                        <input id="inputKPH" class="" type="number" 
+                        placeholder="KPH" oninput="speedConverter(this.id,this.value)" 
+                        onchange="speedConverter(this.id,this.value)">
+                </div>
+  
+                <div class="convertdiv">
+                        <label>Knots</label>
+                        <input id="inputKnots" class="" type="number" 
+                        placeholder="Knots" oninput="speedConverter(this.id,this.value)" 
+                        onchange="speedConverter(this.id,this.value)">
+                </div>
+  
+                <div class="convertdiv">
+                        <label>Mach</label>
+                        <input id="inputMach" class="" type="number" 
+                        placeholder="Mach" oninput="speedConverter(this.id,this.value)" 
+                        onchange="speedConverter(this.id,this.value)">
+                </div>
+        </div>
+
     </div>
 
     <div id="Graph" class="tabcontent" style="display:none">
@@ -162,7 +340,10 @@
         </div>
         <textarea id="notesArea" name="notesArea" rows="30" cols="50" id="notesArea" > </textarea> 
 	</form>
+
     </div>
+
+
 </body>
 </html>
 
