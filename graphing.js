@@ -179,7 +179,6 @@ function mapGraph(){
     let equationVar = document.getElementById('equation').value
     //cant quite get it to work. equationVar has the right thing, but code 
     //only works if it is hardcoded into the return function. EG: x*3 works, but not a variable
-    myGraph.drawEquation( function(x) { return x*x ; } , 'green', 0.8);
-    alert(equationVar);
+    myGraph.drawEquation( function(x) { return eval(equationVar); } , 'green', 0.8);
 };
 

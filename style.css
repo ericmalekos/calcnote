@@ -136,7 +136,7 @@ span.move
 	height: 500px;
   	position: absolute;
   	top: 62%;
-  	left: 3%;
+  	left: 4%;
 	transform: translateX(-50%) translateY(-50%);
 }
 
@@ -181,7 +181,7 @@ span.move
   	top: 62%;
   	left: 30%;
 	  transform: translateX(-50%) translateY(-50%);
-	  z-index: 2;
+	  z-index: 1;
 }
 
 /* Conversions Styles */
