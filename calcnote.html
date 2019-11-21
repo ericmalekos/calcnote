@@ -3,70 +3,28 @@
 <head>
   <script src="history.js"></script>
   <script src="dlButtons.js"></script>
+  <script src="calcFunctions.js"></script>
+  <script src="converters.js"></script>
   <script src="graphing.js"></script>
-
+  <script src="textareaFormatting.js"></script>
   <!-- required libraries for JSPDF-->
   <script src="js/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
-
-    <script>            
-	    function insert(num){
-                document.form.textview.value = document.form.textview.value+num
-            }
-	    function equal(){
-                var exp = document.form.textview.value
-                if(exp){
-                    out = eval(exp)
-                    document.form.textview.value = eval(exp)
-                    newElement(exp, out)
-                }
-            }
-            function clean(){
-                document.form.textview.value = ""
-
-            }
-            function back(){
-                var exp = document.form.textview.value
-                document.form.textview.value = exp.substring(0,exp.length-1)
-            }
-    </script>
-
-    <script language="javascript" type="text/javascript">
-
-	function openCalc(evt, calcType) {
-  	    // Declare all variables
-  	    var i, tabcontent, tablinks;
-
- 	    // Get all elements with class="tabcontent" and hide them
-  	    tabcontent = document.getElementsByClassName("tabcontent");
-  	    for (i = 0; i < tabcontent.length; i++) {
-    		tabcontent[i].style.display = "none";
-  		}
-
-  	    // Get all elements with class="tablinks" and remove the class "active"
-  	    tablinks = document.getElementsByClassName("tablinks");
-  	    for (i = 0; i < tablinks.length; i++) {
-    	        tablinks[i].className = tablinks[i].className.replace(" active", "");
-  		}
-
-  	    // Show the current tab, and add an "active" class to the link that opened the tab
-  	    document.getElementById(calcType).style.display = "block";
-  	    evt.currentTarget.className += " active";
-	}
-
-	document.getElementById("defaultOpen").click();
-
-    </script>
-
-  <script src="converters.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="style.css" /> 
-    <link rel="stylesheet" type="text/css" href="historyStyle.css"/>
-    <link rel="stylesheet" type="text/css" href="graphing.css"/>
+  <script src="https://cdn.plot.ly/plotly-1.35.2.min.js"></script>
+  <script src="https://unpkg.com/mathjs@6.2.5/dist/math.min.js"></script>
+  <script src="https://kendo.cdn.telerik.com/2019.3.1023/js/jquery.min.js"></script>
+  <script src="https://kendo.cdn.telerik.com/2019.3.1023/js/kendo.all.min.js"></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="historyStyle.css"/>
+  <link rel="stylesheet" type="text/css" href="graphing.css"/>
+  <link rel="stylesheet" type="text/css" href="converters.css"/>
+  <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.3.1023/styles/kendo.default-v2.min.css" />
 
 	<title> Online Note-Taking Calculator </title>
 </head>
-<body>
+<body  >
     <div class="vl"></div>
 <!--    <div class="bg"></div> -->
 
@@ -75,20 +33,18 @@
     <div class="tab">
       <button id="defaultOpen" class="tablinks" onclick="openCalc(event, 'Main')" >Main</button>
       <button class="tablinks" onclick="openCalc(event, 'Advance')">Advance</button>
-
       <button class="tablinks" onclick="openCalc(event, 'Weight')">Weight</button>
       <button class="tablinks" onclick="openCalc(event, 'Temperature')">Temperature</button>
       <button class="tablinks" onclick="openCalc(event, 'Length')">Length</button>
       <button class="tablinks" onclick="openCalc(event, 'Speed')">Speed</button>
       <button class="tablinks" onclick="openCalc(event, 'Graph')">Graphing</button>
-
     </div>
 
         <!-- *****  Main Calculator  ***** -->
     <div id="Main" class="tabcontent">
        <div class="calculator">
         <form name="form">
-            <input class="textview" name="textview">
+            <input class="textview" name="textview" style="width:220">
         </form>
         <table>
             <tr>
@@ -96,124 +52,190 @@
                 <td><input type="button" value="⌫" onclick="back()"></td>
                 <td><input type="button" value="÷" onclick="insert(' / ')"></td>
                 <td><input type="button" value="×" onclick="insert(' * ')"></td>
-            		<td><input style="width:180" type="button" value="xⁱ" onclick=""></td>
             </tr>
-          
+
             <tr>
                 <td><input type="button" value="7" onclick="insert(7)"></td>
                 <td><input type="button" value="8" onclick="insert(8)"></td>
                 <td><input type="button" value="9" onclick="insert(9)"></td>
                 <td><input type="button" value="-" onclick="insert(' - ')"></td>
-	            	<td><input style="width:180" type="button" value="√" onclick=""></td>
+	            <!--	<td><input style="width:180" type="button" value="√" onclick=""></td> -->
             </tr>
-          
+
             <tr>
                 <td><input type="button" value="4" onclick="insert(4)"></td>
                 <td><input type="button" value="5" onclick="insert(5)"></td>
                 <td><input type="button" value="6" onclick="insert(6)"></td>
                 <td><input type="button" value="+" onclick="insert(' + ')"></td>
-	            	<td><input style="width:180" type="button" value="sin" onclick=""></td>
             </tr>
-          
+
             <tr>
                 <td><input type="button" value="1" onclick="insert(1)"></td>
                 <td><input type="button" value="2" onclick="insert(2)"></td>
                 <td><input type="button" value="3" onclick="insert(3)"></td>
                 <td rowspan=5><input style="height:106" type="button" value="=" onclick="equal()"></td>
-                <td><input style="width:180" type="button" value="cos" onclick=""></td>
 	          </tr>
-          
+
             <tr>
                 <td colspan=2><input style="width:106" type="button" value="0" onclick="insert(0)"></td>
                 <td><input type="button" value="." onclick="insert('.')"></td>
-                <td><input style="width:180" type="button" value="tan" onclick=""></td>
             </tr>
         </table>
       </div>
 
     </div>
 
+      <!-- *****  Advance Calculator  ***** -->
     <div id="Advance" class="tabcontent" style="display:none">
-      <h3>Advance Calculator</h3>
+      <div class="calculator">
+       <form name="form2">
+           <input class="textview" name="textview2">
+       </form>
+       <table>
+           <tr>
+               <td><input type="button" value="C" onclick="clean2()"></td>
+               <td><input type="button" value="⌫" onclick="back2()"></td>
+               <td><input type="button" value="÷" onclick="insert2(' / ')"></td>
+               <td><input type="button" value="×" onclick="insert2(' * ')"></td>
+               <td><input style="width:90" type="button" value="π" onclick="document.form2.textview2.value =
+                      document.form2.textview2.value + 3.141592653589793"></td>
+               <td><input style="width:90" type="button" value="log" onclick="document.form2.textview2.value =
+                      Math.log10(document.form2.textview2.value)"></td>
+           </tr>
+
+           <tr>
+               <td><input type="button" value="7" onclick="insert2(7)"></td>
+               <td><input type="button" value="8" onclick="insert2(8)"></td>
+               <td><input type="button" value="9" onclick="insert2(9)"></td>
+               <td><input type="button" value="-" onclick="insert2(' - ')"></td>
+               <td><input style="width:90" type="button" value="√" onclick="document.form2.textview2.value =
+                      Math.sqrt(document.form2.textview2.value)"></td>
+               <td><input style="width:90" type="button" value="ln" onclick="document.form2.textview2.value =
+                      Math.log(document.form2.textview2.value)"></td>
+           </tr>
+
+           <tr>
+               <td><input type="button" value="4" onclick="insert2(4)"></td>
+               <td><input type="button" value="5" onclick="insert2(5)"></td>
+               <td><input type="button" value="6" onclick="insert2(6)"></td>
+               <td><input type="button" value="+" onclick="insert2(' + ')"></td>
+               <td><input style="width:90" type="button" value="sin" onclick="document.form2.textview2.value =
+                      Math.sin(document.form2.textview2.value)"></td>
+               <td><input style="width:90" type="button" value="sin-1" onclick="document.form2.textview2.value =
+                      Math.asin(document.form2.textview2.value)"></td>
+           </tr>
+
+           <tr>
+               <td><input type="button" value="1" onclick="insert2(1)"></td>
+               <td><input type="button" value="2" onclick="insert2(2)"></td>
+               <td><input type="button" value="3" onclick="insert2(3)"></td>
+               <td rowspan=5><input style="height:106" type="button" value="=" onclick="equal2()"></td>
+               <td><input style="width:90" type="button" value="cos" onclick="document.form2.textview2.value =
+                      Math.cos(document.form2.textview2.value)"></td>
+               <td><input style="width:90" type="button" value="cos-1" onclick="document.form2.textview2.value =
+                      Math.acos(document.form2.textview2.value)"></td>
+           </tr>
+
+           <tr>
+               <td colspan=2><input style="width:106" type="button" value="0" onclick="insert2(0)"></td>
+               <td><input type="button" value="." onclick="insert2('.')"></td>
+               <td><input style="width:90" type="button" value="tan" onclick="document.form2.textview2.value =
+                      Math.tan(document.form2.textview2.value)"></td>
+               <td><input style="width:90" type="button" value="tan-1" onclick="document.form2.textview2.value =
+                      Math.atan(document.form2.textview2.value)"></td>
+           </tr>
+       </table>
+     </div>
+
     </div>
 
+          <!-- *****  weight Converter ***** -->
     <div id="Weight" class="tabcontent" style="display:none">
-      <h3>Weight Converter</h3>
 
-        <div class="convertdiv" style="margin:0 -20px">
-                <p style="margin-left:8px;margin-bottom:4px">Type a value in any of the fields
-                to convert between weight measurements:</p>
+        <div class="row" style="margin:0 -20px">
+                <h3>Weight Converter</h3>
 
                 <div class="convertdiv">
-                        <label>Pounds</label>
-                        <input id="inputPounds" class="" type="number"
+                        <span>
+                        <input id="inputPounds" class="slide-up" type="number"
                         placeholder="Pounds" oninput="weightConverter(this.id,this.value)"
                         onchange="weightConverter(this.id,this.value)">
+                        <label for="pounds">Pounds</label>
+                      </span>
                 </div>
 
                 <div class="convertdiv">
-                        <label>Kilograms</label>
-                        <input id="inputKilograms" class="" type="number"
+                  <span>
+                        <input id="inputKilograms" class="slide-up" type="number"
                         placeholder="Kilograms" oninput="weightConverter(this.id,this.value)"
                         onchange="weightConverter(this.id,this.value)">
+                        <label for="kilograms">Kilograms</label>
+                  </span>
                 </div>
- 
+
                 <div class="convertdiv">
-                        <label>Ounces</label>
-                        <input id="inputOunces" class="" type="number"
+                  <span>
+                        <input id="inputOunces" class="slide-up" type="number"
                         placeholder="Ounces" oninput="weightConverter(this.id,this.value)"
                         onchange="weightConverter(this.id,this.value)">
+                        <label for="ounces">Ounces</label>
+                  </span>
                 </div>
 
                 <div class="convertdiv">
-                        <label>Grams</label>
-                        <input id="inputGrams" class="" type="number"
+                  <span>
+                        <input id="inputGrams" class="slide-up" type="number"
                         placeholder="Grams" oninput="weightConverter(this.id,this.value)"
                         onchange="weightConverter(this.id,this.value)">
+                        <label for="grams">Grams</label>
+                  </span>
                 </div>
 
                 <div class="convertdiv">
-                        <label>Stones</label>
-                        <input id="inputStones" class="" type="number"
+                  <span>
+                        <input id="inputStones" class="slide-up" type="number"
                         placeholder="Stones" oninput="weightConverter(this.id,this.value)"
                         onchange="weightConverter(this.id,this.value)">
+                        <label for="stones">Stones</label>
+                  </span>
                 </div>
         </div>
     </div>
 
-
+        <!-- *****  Temperature Converter ***** -->
     <div id="Temperature" class="tabcontent" style="display:none">
       <h3>Temperature Converter</h3>
 
 	<div class="convertdiv" style="margin:0 -20px">
-	  	<p style="margin-left:8px;margin-bottom:4px;">Type a value in any of the fields 
+	  	<p style="margin-left:8px;margin-bottom:4px;">Type a value in any of the fields
 		to convert between <br /> temperature measurements:</p>
 
   		<div class="convertdiv">
     			<label>Fahrenheit</label>
-    			<input id="inputFahrenheit" class="" type="number" min="-459.66999999999996" 
-			placeholder="Fahrenheit" oninput="temperatureConverter(this.id,this.value)" 
+    			<input id="inputFahrenheit" class="" type="number" min="-459.66999999999996"
+			placeholder="Fahrenheit" oninput="temperatureConverter(this.id,this.value)"
 			onchange="temperatureConverter(this.id,this.value)">
   		</div>
 
   		<div class="convertdiv">
     	  		<label>Celsius</label>
-    	  		<input id="inputCelsius" class="" type="number" min="-273.15" 
-			placeholder="Celsius" oninput="temperatureConverter(this.id,this.value)" 
+    	  		<input id="inputCelsius" class="" type="number" min="-273.15"
+			placeholder="Celsius" oninput="temperatureConverter(this.id,this.value)"
 			onchange="temperatureConverter(this.id,this.value)">
   		</div>
 
   		<div class="convertdiv">
     	  		<label>Kelvin</label>
-    	  		<input id="inputKelvin" class="" type="number" min="0" 
-			placeholder="Kelvin" oninput="temperatureConverter(this.id,this.value)" 
+    	  		<input id="inputKelvin" class="" type="number" min="0"
+			placeholder="Kelvin" oninput="temperatureConverter(this.id,this.value)"
 			onchange="temperatureConverter(this.id,this.value)">
   		</div>
 
    	</div>
-       
+
     </div>
-  
+
+        <!-- *****  Length Converter ***** -->
       <div id="Length" class="tabcontent" style="display:none">
       <h3>Length Converter</h3>
 
@@ -272,37 +294,38 @@
 
     </div>
 
+        <!-- *****  Speed Converter ***** -->
     <div id="Speed" class="tabcontent" style="display:none">
       <h3>Speed Converter</h3>
         <div class="convertdiv" style="margin:0 -20px">
-                <p style="margin-left:8px;margin-bottom:4px;">Type a value 
+                <p style="margin-left:8px;margin-bottom:4px;">Type a value
                 in any of the fields to convert between speed measurements:</p>
-  
+
                 <div class="convertdiv">
                         <label>MPH</label>
-                        <input id="inputMPH" class="" type="number" 
-                        placeholder="MPH" oninput="speedConverter(this.id,this.value)" 
+                        <input id="inputMPH" class="" type="number"
+                        placeholder="MPH" oninput="speedConverter(this.id,this.value)"
                         onchange="speedConverter(this.id,this.value)">
                 </div>
-  
+
                 <div class="convertdiv">
                         <label>KPH</label>
-                        <input id="inputKPH" class="" type="number" 
-                        placeholder="KPH" oninput="speedConverter(this.id,this.value)" 
+                        <input id="inputKPH" class="" type="number"
+                        placeholder="KPH" oninput="speedConverter(this.id,this.value)"
                         onchange="speedConverter(this.id,this.value)">
                 </div>
-  
+
                 <div class="convertdiv">
                         <label>Knots</label>
-                        <input id="inputKnots" class="" type="number" 
-                        placeholder="Knots" oninput="speedConverter(this.id,this.value)" 
+                        <input id="inputKnots" class="" type="number"
+                        placeholder="Knots" oninput="speedConverter(this.id,this.value)"
                         onchange="speedConverter(this.id,this.value)">
                 </div>
-  
+
                 <div class="convertdiv">
                         <label>Mach</label>
-                        <input id="inputMach" class="" type="number" 
-                        placeholder="Mach" oninput="speedConverter(this.id,this.value)" 
+                        <input id="inputMach" class="" type="number"
+                        placeholder="Mach" oninput="speedConverter(this.id,this.value)"
                         onchange="speedConverter(this.id,this.value)">
                 </div>
         </div>
@@ -310,16 +333,17 @@
     </div>
 
     <div id="Graph" class="tabcontent" style="display:none">
-        <canvas id="graphingCanvas" > Graph </canvas>
-
-        <div id="graphConfig">
-            <input type="text" id="equation" value="This is a test" name="equation">
-            <input type="range" min="10" max="100" value="50" class="slider" id="size">
-            <input type="button" class="submitGraph" value="Click this to redraw map" onclick="mapGraph();">
-        </div>
+        <form id="form">
+            <label for="eq">Enter an equation:</label>
+            <input type="text" id="graphEquation" />
+            <input type="range" min="1" max="100" value="50" class="slider" id="size">
+            <input type="button"  value="Draw" onClick="draw();"/>
+          </form>
+          
+          <div id="plot"></div>
     </div>
 
-	 <!-- *****history***** -->
+        <!-- *****history***** -->
 
 <div name="history" id="history">
     <ul id="histList">
@@ -330,17 +354,22 @@
     <div class="note">
 	<form name="notes">
         <div id="workingButtons">
-            <!-- All download buttons. To add more: 
+            <!-- All download buttons. To add more:
                                             Copy and paste any line from below,
-                                            Replace extensions on download attribute, 
-                                            Rename id and onclick() method, and 
-                                            Change value to reflect what file extension is being used. 
+                                            Replace extensions on download attribute,
+                                            Rename id and onclick() method, and
+                                            Change value to reflect what file extension is being used.
             -->
             <a href="" id="dlTxtButton" download="notes.txt"> <input type="button" class="dlButtons" value="Download as .txt" onClick="downloadTxt();" ></a>
-            <a href="" id="dlDocxButton" download="notes.docx"> <input type="button" class="dlButtons" value="Download as .docx" onClick="downloadDocx();" ></a>
+            <a id="dlDocxButton" > <input type="button" class="dlButtons" value="Download as .docx" onClick="downloadDocx();" ></a>
             <a id="dlPdfButton"> <input type="button" class="dlButtons" value="Download as .pdf" onClick="downloadPdf();" ></a>
         </div>
-        <textarea id="notesArea" name="notesArea" rows="30" cols="50" id="notesArea" > </textarea> 
+        
+        <div id="example">
+
+            <textarea id="notesArea" name="notesArea" rows="30" cols="50" aria-label="notesArea" onLoad="textareaEditor();"> </textarea>
+        </div>
+        
 	</form>
 
     </div>
@@ -348,4 +377,3 @@
 
 </body>
 </html>
-
