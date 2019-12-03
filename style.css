@@ -6,11 +6,23 @@
 }
 
 html,
-body {
+body
+{
   overflow-x: hidden;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
+  background: #778899;
+}
 
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 115px;
+  border-radius: 50%;
+  -webkit-filter: contrast(180%);filter: contrast(180%);
+  position: absolute;
+  left: 0.5%;
 }
 
 .vl
@@ -112,10 +124,18 @@ transition:all .100s;
 /*Styles transfer buttons */
  input.dlButtons
 {
-	width: 30%;
+	width: 27%;
 	font-size: 20px;
   border-radius: 2px;
+  height: 5%;
+  left: 5%;
+  position: relative;
 
+}
+
+#workingButtons
+{
+  	padding-top: 10px;
 }
 
 /*Styles actual textarea */
@@ -124,7 +144,10 @@ transition:all .100s;
 	box-sizing: border-box;
 	width: 90%;
 	height: 85%;
+  font-family: Hawaii 5-0, sans-serif;
+  font-size: 20px;
 	transform: translate(15px);
+  background: #eeeeee;
 }
 
 
@@ -166,7 +189,7 @@ span.move
 
 .tabcontent .tab
 {
-	box-sizing: border-box
+	box-sizing: border-box;
 }
 
 /* Style the tab */
@@ -174,12 +197,12 @@ span.move
 {
 	float: left;
 	border: 1px solid #ccc;
-  background-color: #f1f1f1;
-  width: 8%;
+  background-color: #708090;
+  width: 10%;
 	height: 500px;
 	position: absolute;
-  top: 62%;
-	left: 4%;
+  top: 58%;
+	left: 5%;
 	transform: translateX(-50%) translateY(-50%);
 }
 
@@ -187,12 +210,12 @@ span.move
 .tab button
 {
 	display: block;
-	font-size: 12px;
+	font-size: 13.5px;
+  font-weight: bold;
 	background-color: inherit;
 	color: black;
 	padding: 20px 10px;
 	width: 100%;
-	border: none;
 	outline: none;
 	text-align: left;
 	cursor: pointer;
@@ -221,14 +244,13 @@ span.move
 	border: none;
 	height: 500px;
 	position: absolute;
-	top: 62%;
-	left: 30%;
-  	transform: translateX(-50%) translateY(-50%);
-  	z-index: 2;
+	top: 58%;
+	left: 31%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 2;
 }
 
 /* Conversions Styles */
-
 
 input[type=number]
 {
@@ -237,16 +259,33 @@ input[type=number]
 
 .convertdiv
 {
-  padding: ;
+	top: 2%;
 }
 
 h3
 {
-  color: white;
+  color: black;
+  font-size: 22px;
+  border-bottom: solid black;
+  padding: 10px;
+  border-width: 4px;
+  border-collapse: separate;
+}
+
+#Weight, #Temperature, #Speed, #Length
+{
+  top: 45%;
 }
 
 #notesArea
 {
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	padding: 7px;
+}
+
+#graphButton
+{
+  width: 65px;
+  height: 40px;
+  border-radius: 60px;
 }

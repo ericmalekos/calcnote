@@ -1,6 +1,9 @@
 <html>
 <!-- OK -->
 <head>
+
+  <img src="logo.png" alt="Calnot" >
+
   <script src="history.js"></script>
   <script src="dlButtons.js"></script>
   <script src="calcFunctions.js"></script>
@@ -14,8 +17,8 @@
   <script src="https://unpkg.com/mathjs@6.2.5/dist/math.min.js"></script>
   <script src="https://kendo.cdn.telerik.com/2019.3.1023/js/jquery.min.js"></script>
   <script src="https://kendo.cdn.telerik.com/2019.3.1023/js/kendo.all.min.js"></script>
-  
-  
+
+
   <link rel="stylesheet" type="text/css" href="style.css" />
   <link rel="stylesheet" type="text/css" href="historyStyle.css"/>
   <link rel="stylesheet" type="text/css" href="graphing.css"/>
@@ -156,17 +159,17 @@
                 <h3>Weight Converter</h3>
 
                 <div class="convertdiv">
-                        <span>
-                        <input id="inputPounds" class="slide-up" type="number"
+                  <span>
+                        <input id="inputPounds" class="clean-slide" type="number"
                         placeholder="Pounds" oninput="weightConverter(this.id,this.value)"
                         onchange="weightConverter(this.id,this.value)">
                         <label for="pounds">Pounds</label>
-                      </span>
+                  </span>
                 </div>
 
                 <div class="convertdiv">
                   <span>
-                        <input id="inputKilograms" class="slide-up" type="number"
+                        <input id="inputKilograms" class="clean-slide" type="number"
                         placeholder="Kilograms" oninput="weightConverter(this.id,this.value)"
                         onchange="weightConverter(this.id,this.value)">
                         <label for="kilograms">Kilograms</label>
@@ -175,7 +178,7 @@
 
                 <div class="convertdiv">
                   <span>
-                        <input id="inputOunces" class="slide-up" type="number"
+                        <input id="inputOunces" class="clean-slide" type="number"
                         placeholder="Ounces" oninput="weightConverter(this.id,this.value)"
                         onchange="weightConverter(this.id,this.value)">
                         <label for="ounces">Ounces</label>
@@ -184,7 +187,7 @@
 
                 <div class="convertdiv">
                   <span>
-                        <input id="inputGrams" class="slide-up" type="number"
+                        <input id="inputGrams" class="clean-slide" type="number"
                         placeholder="Grams" oninput="weightConverter(this.id,this.value)"
                         onchange="weightConverter(this.id,this.value)">
                         <label for="grams">Grams</label>
@@ -193,7 +196,7 @@
 
                 <div class="convertdiv">
                   <span>
-                        <input id="inputStones" class="slide-up" type="number"
+                        <input id="inputStones" class="clean-slide" type="number"
                         placeholder="Stones" oninput="weightConverter(this.id,this.value)"
                         onchange="weightConverter(this.id,this.value)">
                         <label for="stones">Stones</label>
@@ -204,91 +207,107 @@
 
         <!-- *****  Temperature Converter ***** -->
     <div id="Temperature" class="tabcontent" style="display:none">
-      <h3>Temperature Converter</h3>
 
-	<div class="convertdiv" style="margin:0 -20px">
-	  	<p style="margin-left:8px;margin-bottom:4px;">Type a value in any of the fields
-		to convert between <br /> temperature measurements:</p>
+	      <div class="row" style="margin:0 -20px">
+              <h3>Temperature Converter</h3>
 
-  		<div class="convertdiv">
-    			<label>Fahrenheit</label>
-    			<input id="inputFahrenheit" class="" type="number" min="-459.66999999999996"
-			placeholder="Fahrenheit" oninput="temperatureConverter(this.id,this.value)"
-			onchange="temperatureConverter(this.id,this.value)">
-  		</div>
 
-  		<div class="convertdiv">
-    	  		<label>Celsius</label>
-    	  		<input id="inputCelsius" class="" type="number" min="-273.15"
-			placeholder="Celsius" oninput="temperatureConverter(this.id,this.value)"
-			onchange="temperatureConverter(this.id,this.value)">
-  		</div>
+  		        <div class="convertdiv">
+                <span>
+    			          <input id="inputFahrenheit" class="clean-slide" type="number" min="-459.66999999999996"
+			                 placeholder="Fahrenheit" oninput="temperatureConverter(this.id,this.value)"
+			                    onchange="temperatureConverter(this.id,this.value)">
+                          <label>Fahrenheit</label>
+                </span>
+              </div>
 
-  		<div class="convertdiv">
-    	  		<label>Kelvin</label>
-    	  		<input id="inputKelvin" class="" type="number" min="0"
-			placeholder="Kelvin" oninput="temperatureConverter(this.id,this.value)"
-			onchange="temperatureConverter(this.id,this.value)">
-  		</div>
+  		        <div class="convertdiv">
+                <span>
+    	  		          <input id="inputCelsius" class="clean-slide" type="number" min="-273.15"
+			                   placeholder="Celsius" oninput="temperatureConverter(this.id,this.value)"
+			                      onchange="temperatureConverter(this.id,this.value)">
+                          <label>Celsius</label>
+                </span>
+  		        </div>
 
-   	</div>
+  		        <div class="convertdiv">
+                <span>
+    	  		          <input id="inputKelvin" class="clean-slide" type="number" min="0"
+			                   placeholder="Kelvin" oninput="temperatureConverter(this.id,this.value)"
+			                      onchange="temperatureConverter(this.id,this.value)">
+                          <label>Kelvin</label>
+                </span>
+  		        </div>
+   	   </div>
 
-    </div>
+  </div>
 
         <!-- *****  Length Converter ***** -->
       <div id="Length" class="tabcontent" style="display:none">
-      <h3>Length Converter</h3>
 
-      	<div class="convertdiv" style="margin:0 -20px">
-                <p style="margin-left:8px;margin-bottom:4px;">Type a value in any of the fields to convert between Length measurements:</p>
-
+      	<div class="row" style="margin:0 -20px">
+            <h3>Length Converter</h3>
                 <div class="convertdiv">
-                        <label>Feet</label>
-                        <input id="inputFeet" class="" type="number"
+                  <span>
+                        <input id="inputFeet" class="clean-slide" type="number"
                         placeholder="Feet" oninput="lengthConverter(this.id,this.value)"
                         onchange="lengthConverter(this.id,this.value)">
+                        <label>Feet</label>
+                  </span>
                 </div>
 
                 <div class="convertdiv">
-                        <label>Meters</label>
-                        <input id="inputMeters" class="" type="number"
+                  <span>
+                        <input id="inputMeters" class="clean-slide" type="number"
                         placeholder="Meters" oninput="lengthConverter(this.id,this.value)"
                         onchange="lengthConverter(this.id,this.value)">
+                        <label>Meters</label>
+                  </span>
                 </div>
 
                 <div class="convertdiv">
-                        <label>Inches</label>
-                        <input id="inputInches" class="" type="number"
+                  <span>
+                        <input id="inputInches" class="clean-slide" type="number"
                         placeholder="Inches" oninput="lengthConverter(this.id,this.value)"
                         onchange="lengthConverter(this.id,this.value)">
+                        <label>Inches</label>
+                  </span>
                 </div>
 
                 <div class="convertdiv">
-                        <label>cm</label>
-                        <input id="inputcm" class="" type="number"
+                  <span>
+                        <input id="inputcm" class="clean-slide" type="number"
                         placeholder="cm" oninput="lengthConverter(this.id,this.value)"
                         onchange="lengthConverter(this.id,this.value)">
+                        <label>cm</label>
+                  </span>
                 </div>
 
                 <div class="convertdiv">
-                        <label>Yards</label>
-                        <input id="inputYards" class="" type="number"
+                  <span>
+                        <input id="inputYards" class="clean-slide" type="number"
                         placeholder="Yards" oninput="lengthConverter(this.id,this.value)"
                         onchange="lengthConverter(this.id,this.value)">
+                        <label>Yards</label>
+                  </span>
                 </div>
 
                 <div class="convertdiv">
-                        <label>Kilometers</label>
-                        <input id="inputKilometers" class="" type="number"
+                  <span>
+                        <input id="inputKilometers" class="clean-slide" type="number"
                         placeholder="Kilometers" oninput="lengthConverter(this.id,this.value)"
                         onchange="lengthConverter(this.id,this.value)">
+                        <label>Kilometers</label>
+                  </span>
                 </div>
 
                 <div class="convertdiv">
-                        <label>Miles</label>
-                        <input id="inputMiles" class="" type="number"
+                  <span>
+                        <input id="inputMiles" class="clean-slide" type="number"
                         placeholder="Miles" oninput="lengthConverter(this.id,this.value)"
                         onchange="lengthConverter(this.id,this.value)">
+                        <label>Miles</label>
+                  </span>
                 </div>
         </div>
 
@@ -296,37 +315,43 @@
 
         <!-- *****  Speed Converter ***** -->
     <div id="Speed" class="tabcontent" style="display:none">
-      <h3>Speed Converter</h3>
-        <div class="convertdiv" style="margin:0 -20px">
-                <p style="margin-left:8px;margin-bottom:4px;">Type a value
-                in any of the fields to convert between speed measurements:</p>
+        <div class="row" style="margin:0 -20px">
+                <h3>Speed Converter</h3>
 
                 <div class="convertdiv">
-                        <label>MPH</label>
-                        <input id="inputMPH" class="" type="number"
+                  <span>
+                        <input id="inputMPH" class="clean-slide" type="number"
                         placeholder="MPH" oninput="speedConverter(this.id,this.value)"
                         onchange="speedConverter(this.id,this.value)">
+                        <label>MPH</label>
+                  </span>
                 </div>
 
                 <div class="convertdiv">
-                        <label>KPH</label>
-                        <input id="inputKPH" class="" type="number"
+                  <span>
+                        <input id="inputKPH" class="clean-slide" type="number"
                         placeholder="KPH" oninput="speedConverter(this.id,this.value)"
                         onchange="speedConverter(this.id,this.value)">
+                        <label>KPH</label>
+                  </span>
                 </div>
 
                 <div class="convertdiv">
-                        <label>Knots</label>
-                        <input id="inputKnots" class="" type="number"
+                  <span>
+                        <input id="inputKnots" class="clean-slide" type="number"
                         placeholder="Knots" oninput="speedConverter(this.id,this.value)"
                         onchange="speedConverter(this.id,this.value)">
+                        <label>Knots</label>
+                  </span>
                 </div>
 
                 <div class="convertdiv">
-                        <label>Mach</label>
-                        <input id="inputMach" class="" type="number"
+                  <span>
+                        <input id="inputMach" class="clean-slide" type="number"
                         placeholder="Mach" oninput="speedConverter(this.id,this.value)"
                         onchange="speedConverter(this.id,this.value)">
+                        <label>Mach</label>
+                  </span>
                 </div>
         </div>
 
@@ -337,9 +362,9 @@
             <label for="eq">Enter an equation:</label>
             <input type="text" id="graphEquation" />
             <input type="range" min="1" max="100" value="50" class="slider" id="size">
-            <input type="button"  value="Draw" onClick="draw();"/>
+            <input type="button" id="graphButton" value="Draw" onClick="draw();"/>
           </form>
-          
+
           <div id="plot"></div>
     </div>
 
@@ -353,6 +378,12 @@
         <!-- *****The Note***** -->
     <div class="note">
 	<form name="notes">
+
+        <div id="example">
+
+            <textarea id="notesArea" name="notesArea" rows="30" cols="50" aria-label="notesArea" onLoad="textareaEditor();"> </textarea>
+        </div>
+
         <div id="workingButtons">
             <!-- All download buttons. To add more:
                                             Copy and paste any line from below,
@@ -360,16 +391,11 @@
                                             Rename id and onclick() method, and
                                             Change value to reflect what file extension is being used.
             -->
-            <a href="" id="dlTxtButton" download="notes.txt"> <input type="button" class="dlButtons" value="Download as .txt" onClick="downloadTxt();" ></a>
-            <a id="dlDocxButton" > <input type="button" class="dlButtons" value="Download as .docx" onClick="downloadDocx();" ></a>
-            <a id="dlPdfButton"> <input type="button" class="dlButtons" value="Download as .pdf" onClick="downloadPdf();" ></a>
+            <a href="" id="dlTxtButton" download="notes.txt"> <input type="button" class="dlButtons" value="Download(txt)" onClick="downloadTxt();" ></a>
+            <a id="dlDocxButton" > <input type="button" class="dlButtons" value="Download(docx)" onClick="downloadDocx();" ></a>
+            <a id="dlPdfButton"> <input type="button" class="dlButtons" value="Download(pdf)" onClick="downloadPdf();" ></a>
         </div>
-        
-        <div id="example">
 
-            <textarea id="notesArea" name="notesArea" rows="30" cols="50" aria-label="notesArea" onLoad="textareaEditor();"> </textarea>
-        </div>
-        
 	</form>
 
     </div>
