@@ -17,8 +17,8 @@ function clean(){
         }
 
 function back(){
-            var exp = document.form2.textview.value
-            document.form2.textview.value = exp.substring(0,exp.length-1)
+            var exp = document.form.textview.value
+            document.form.textview.value = exp.substring(0,exp.length-1)
         }
 
 
