@@ -26,9 +26,9 @@ function newElement(exp, out) {
   document.getElementById("histList").appendChild(li);
 
   var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u27A1");
+//  var txt = document.createTextNode("\u27A1");
   span.className = "move";
-  span.appendChild(txt);
+//  span.appendChild(txt);
   li.appendChild(span);
 
   /*for (i = 0; i < close.length; i++) {
