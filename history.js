@@ -1,12 +1,4 @@
-/*
-var move = document.getElementsByID("move");
-var i;
-for (i = 0; i < close.length; i++) {
-  move[i].onclick = function() {
-    var div = this.parentElement;
-    document.getElementById(noteText).appendChild(this.textContent);
-  }
-}*/
+
 
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
@@ -26,15 +18,8 @@ function newElement(exp, out) {
   document.getElementById("histList").appendChild(li);
 
   var span = document.createElement("SPAN");
-//  var txt = document.createTextNode("\u27A1");
   span.className = "move";
-//  span.appendChild(txt);
   li.appendChild(span);
 
-  /*for (i = 0; i < close.length; i++) {
-    move[i].onclick = function() {
-      var div = this.parentElement;
-      document.getElementById(noteText).appendChild(this.textContent);
-    }
-  }*/
+
 }

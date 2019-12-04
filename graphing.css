@@ -1,7 +1,7 @@
 #graphConfig
 { 
     border: 1px solid black; 
-    width: 60%;
+    width: 50%;
     height: 70%;
 }
 
@@ -9,4 +9,25 @@ input.submitGraph
 {
     width: 120px;
     font-size: 10px;
+}
+
+#Graph
+{
+    z-index: 3;
+    background-color: #778899;
+}
+
+#graphButton
+{
+    width: 175px;
+    height: 40px;
+    border-radius: 60px;
+}
+
+#graphEquation, #size
+{
+    width: 90%;
+    height: 40px;
+    font-size: 22px;
+    margin: 5px;
 }

@@ -34,7 +34,7 @@
 
         <!-- *****Tabs***** -->
     <div class="tab">
-      <button id="defaultOpen" class="tablinks" onclick="openCalc(event, 'Main')" >Main</button>
+      <button id="defaultOpen" class="tablinks active" onclick="openCalc(event, 'Main')" >Main</button>
       <button class="tablinks" onclick="openCalc(event, 'Advance')">Advance</button>
       <button class="tablinks" onclick="openCalc(event, 'Weight')">Weight</button>
       <button class="tablinks" onclick="openCalc(event, 'Temperature')">Temperature</button>
@@ -44,7 +44,7 @@
     </div>
 
         <!-- *****  Main Calculator  ***** -->
-    <div id="Main" class="tabcontent">
+    <div id="Main" class="tabcontent" >
        <div class="calculator">
         <form name="form">
             <input class="textview" name="textview" style="width:220">
@@ -102,8 +102,7 @@
                <td><input type="button" value="×" onclick="insert2(' * ')"></td>
                <td><input style="width:90" type="button" value="π" onclick="document.form2.textview2.value =
                       document.form2.textview2.value + 3.141592653589793"></td>
-               <td><input style="width:90" type="button" value="log" onclick="document.form2.textview2.value =
-                      Math.log10(document.form2.textview2.value)"></td>
+               <td><input style="width:90" type="button" value="log" onclick="log();"></td>
            </tr>
 
            <tr>
@@ -111,10 +110,8 @@
                <td><input type="button" value="8" onclick="insert2(8)"></td>
                <td><input type="button" value="9" onclick="insert2(9)"></td>
                <td><input type="button" value="-" onclick="insert2(' - ')"></td>
-               <td><input style="width:90" type="button" value="√" onclick="document.form2.textview2.value =
-                      Math.sqrt(document.form2.textview2.value)"></td>
-               <td><input style="width:90" type="button" value="ln" onclick="document.form2.textview2.value =
-                      Math.log(document.form2.textview2.value)"></td>
+               <td><input style="width:90" type="button" value="√" onclick="sqroot();"></td>
+               <td><input style="width:90" type="button" value="ln" onclick="ln();"></td>
            </tr>
 
            <tr>
@@ -122,10 +119,8 @@
                <td><input type="button" value="5" onclick="insert2(5)"></td>
                <td><input type="button" value="6" onclick="insert2(6)"></td>
                <td><input type="button" value="+" onclick="insert2(' + ')"></td>
-               <td><input style="width:90" type="button" value="sin" onclick="document.form2.textview2.value =
-                      Math.sin(document.form2.textview2.value)"></td>
-               <td><input style="width:90" type="button" value="sin-1" onclick="document.form2.textview2.value =
-                      Math.asin(document.form2.textview2.value)"></td>
+               <td><input style="width:90" type="button" value="sin" onclick="sin();"></td>
+               <td><input style="width:90" type="button" value="sin-1" onclick="arcsin();"></td>
            </tr>
 
            <tr>
@@ -133,19 +128,15 @@
                <td><input type="button" value="2" onclick="insert2(2)"></td>
                <td><input type="button" value="3" onclick="insert2(3)"></td>
                <td rowspan=5><input style="height:106" type="button" value="=" onclick="equal2()"></td>
-               <td><input style="width:90" type="button" value="cos" onclick="document.form2.textview2.value =
-                      Math.cos(document.form2.textview2.value)"></td>
-               <td><input style="width:90" type="button" value="cos-1" onclick="document.form2.textview2.value =
-                      Math.acos(document.form2.textview2.value)"></td>
+               <td><input style="width:90" type="button" value="cos" onclick="cos();"></td>
+               <td><input style="width:90" type="button" value="cos-1" onclick="arccos();"></td>
            </tr>
 
            <tr>
                <td colspan=2><input style="width:106" type="button" value="0" onclick="insert2(0)"></td>
                <td><input type="button" value="." onclick="insert2('.')"></td>
-               <td><input style="width:90" type="button" value="tan" onclick="document.form2.textview2.value =
-                      Math.tan(document.form2.textview2.value)"></td>
-               <td><input style="width:90" type="button" value="tan-1" onclick="document.form2.textview2.value =
-                      Math.atan(document.form2.textview2.value)"></td>
+               <td><input style="width:90" type="button" value="tan" onclick="tan();"></td>
+               <td><input style="width:90" type="button" value="tan-1" onclick="arctan();"></td>
            </tr>
        </table>
      </div>
@@ -359,10 +350,29 @@
 
     <div id="Graph" class="tabcontent" style="display:none">
         <form id="form">
-            <label for="eq">Enter an equation:</label>
-            <input type="text" id="graphEquation" />
-            <input type="range" min="1" max="100" value="50" class="slider" id="size">
-            <input type="button" id="graphButton" value="Draw" onClick="draw();"/>
+            <table>
+              <tr>
+                <th><label for="eq">Enter an equation:</label></th>
+                <th colspan="2"><input type="text" id="graphEquation" /></th>
+                <th><input type="button" id="graphButton" value="Graph Equation" onClick="draw();"/></th>
+              </tr>
+              <tr>
+                <th rowspan="2"><p>Pick a range multiplier value:</p></th>
+                <th colspan="3">
+                  <table style="width:100%; border-collapse: collapse;" >
+                  <tr>
+                    <input type="range" min="5" max="100" value="5" step="5" class="slider" id="size"/>
+                  </tr>
+                  <tr>
+                    <th style="width:10%">1</th>
+                    <th style="width:80%"></th>
+                    <th style="width:10%">20</th>
+                  </tr>
+                  </table>
+                </th>
+              
+              </tr>
+            </table>
           </form>
 
           <div id="plot"></div>
