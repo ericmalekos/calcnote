@@ -128,8 +128,8 @@ input[type=button]
 {
 	position: absolute;
 	top: 0;
-	right: 50%;
-	width: 15%;
+	left: 39%;
+	width: 13%;
 	height: 100%;
 	overflow: auto;
 }
@@ -148,9 +148,10 @@ li.historyList
 {
 	position: relative;
 	min-height: 30px;
+	max-width: 84%;
 	font-size: 15px;
 	padding-left: 10px;
-	padding-right: 30px;
+	padding-right: 10px;
 }
 
 /* moves arrow over for useability */
