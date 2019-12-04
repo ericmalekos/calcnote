@@ -6,7 +6,7 @@ function insert(num){
 function equal(){
             var exp = document.form.textview.value
             if(exp){
-                out = Number(eval(exp).toFixed(8))
+                out = eval(exp)
                 document.form.textview.value = eval(exp)
                 newElement(exp, out)
             }
@@ -29,8 +29,8 @@ function insert2(num){
 function equal2(){
             var exp = document.form2.textview2.value
             if(exp){
-                out = Number(eval(exp).toFixed(8))
-                document.form2.textview2.value = Number(eval(exp).toFixed(8))
+                out = eval(exp)
+                document.form2.textview2.value = eval(exp)
                 newElement(exp, out)
             }
         }
