@@ -249,3 +249,12 @@ h3
 {
   top: 45%;
 }
+
+#copyright
+{
+	float: left;
+	position: absolute;
+	transform: translateY(10%) ;
+	bottom: 1.5%;
+	left: 0.5%;
+}
